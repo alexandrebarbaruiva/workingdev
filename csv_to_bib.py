@@ -22,24 +22,19 @@ def find_all_files(mypath = dirname(realpath(__file__))):
 def read_files(list_of_files):
     all_data = []
     all_names = []
-    print("Hi1")
     for arquivo in range(len(list_of_files)):
         filename = list_of_files[arquivo]
         dataArray = []
         count = 0
-        print("Hi2")
         with open(filename,'r') as csvfile:
-            print("Hi3")
             """
             When first line of CSV is composed of keys has_key must be true
             """
             has_key = iskey = True
             keys = []
             reader = csv.reader(csvfile,delimiter=';')
-            print("Hi31")
             for row in reader:
                 if iskey:
-                    print("Hi33")
                     keys = row
                     iskey = False
                     keys = [k for k in keys if k!='']
@@ -56,8 +51,6 @@ def read_files(list_of_files):
         nome_arquivo = list_of_files[arquivo] + ".bib"
         all_data.append(dataArray)
         all_names.append(nome_arquivo)
-        print("Hi4")
-    print("Hi5")
     return([all_data, all_names])
 
 def generate_data(data_array, file_name):
